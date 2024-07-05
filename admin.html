@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ADMIN CLASS IX</title>
+    <link rel="icon" href="LOGO.png">
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="table2excel.js"></script>
+    <link rel="stylesheet" type="text/css" href="admin.css">
+</head>
+
+<body onbeforeunload="""localStorage.clear()">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h1>Student Details</h1>
+            <div class="input-group">
+                <input onkeyup="fliter1();" id="searchname" type="search" placeholder="Search Data...">
+                <img src="images/search.png" alt="">
+            </div>
+            <div class="export__file">
+                <label for="export-file" class="export__file-btn" title="Export File"></label>
+                <input type="checkbox" id="export-file">
+                <div class="export__file-options">
+                    <label>Export As &nbsp; &#10140;</label>
+                    <label for="export-file" onclick="exportTableToExcel('myTable' , 'Student-Details`')" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
+                </div>
+            </div>
+        </section>
+        <section class="table__body">
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th> Roll No. <span class="icon-arrow" id="arrow1" >&UpArrow;</span></th>
+                        <th> Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Caste <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> DOB <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Gender <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Mother Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Father Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Aadhar Number <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Single Child <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> 2nd Language <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> House Colour <span class="icon-arrow">&UpArrow;</span></th>
+                 
+                        
+                    </tr>
+                </thead>
+                <tbody id="output">
+                    <!--<tr>
+                        <td> 1 </td>
+                        <td> Chan Lee</td>
+                        <td> Seoul </td>
+                        <td> 17 Dec, 2022 </td>
+                        <td><p class="status delivered">UPDATED</p></td>
+                        =
+                    </tr>-->
+                   
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+  function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
+
+    </script>
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="LOGO.png">
+	<link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://kit.fontawesome.com/5ee727908a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<title>ADMIN CLASS IX</title>
+     
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+</head>
+
+<body>
+    <div id="toastBox" style="position: absolute;z-index: 55;bottom: 30px;right: 30px;display: flex;align-items: flex-end;flex-direction: column;overflow: hidden;padding: 20px;">
+        
+    </div>
+	<div class="container">
+		<div class="forms-container">
+			<div class="signin-signup">
+				<form onsubmit="return false" action="#" class="sign-in-form">
+					<h2 class="title">Sign in</h2>
+					<div class="input-field">
+						<i class="fas fa-user"></i>
+						<input id="username" type="text" placeholder="Username" />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-lock"></i>
+						<input id="password" type="password" placeholder="Password" />
+					</div>
+					<input onclick="VerifyAuth()" type="submit" value="Login" class="btn solid" />
+					
+				</form>
+				
+			</div>
+		</div>
+
+		<div class="panels-container">
+			<div class="panel left-panel">
+				<div class="content">
+					<h3>Are You Authorised ?</h3>
+					<p>
+					 It is just a security to ensure that the STUDENT DATA OF CLASS IX C OF BIGMHS dosen't go to wrong hand.
+					</p>
+	
+				</div>
+				<img  src="https://i.ibb.co/6HXL6q1/Privacy-policy-rafiki.png" class="image" alt="" />
+			</div>
+
+	</div>
+
+	<script src="main.js"></script>
+</body>
+
+</html>
